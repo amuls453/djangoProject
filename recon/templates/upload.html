@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Excel Files for Reconciliation</title>
+</head>
+<body>
+<bg color="#2babe2">
+    <div text-align="center"> <h1>Upload Excel Files for Reconciliation</h1></div>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload and Reconcile</button>
+    </form>
+    </bg>
+</body>
+</html>

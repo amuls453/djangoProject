@@ -1,0 +1,31 @@
+{% load static %}
+<!-- recon/templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReconLend</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ReconLend</h1>
+            <p>Reconcile, Register, Reassure.</p>
+        </div>
+        <div class="system-container">
+            <div class="system-box">
+                <a href="{% url 'loan_registration' %}">
+                    <div class="system-title">LOAN REGISTRATION SYSTEM</div>
+                </a>
+            </div>
+            <div class="system-box">
+                <a href="upload.html">
+                    <div class="system-title">RECONCILIATION SYSTEM</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
