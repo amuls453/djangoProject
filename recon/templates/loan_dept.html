@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Department</title>
+    <link rel="stylesheet" href="{% static 'css/loan.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}"> <!-- Include CSS for modal if needed -->
+    <style>
+        /* Back Button Styles */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button .arrow {
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 5px;
+            margin-right: 10px;
+            transform: rotate(135deg);
+        }
+
+        /* Center Button Styles */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 60px);
+        }
+
+        .action-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 8px;
+            font-size: 18px;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            width: 250px;
+            cursor: pointer;
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'home' %}" class="back-button">
+        <span class="arrow"></span>
+        Back
+    </a>
+
+    <div class="button-container">
+        <a href="{% url 'loan_registration' %}" class="action-button">Add New Loan Details</a>
+        <a href="{% url 'loan_details' %}" class="action-button">View Loan Details</a>
+    </div>
+</body>
+</html>

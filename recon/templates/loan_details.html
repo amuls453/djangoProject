@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Details</title>
+    <link rel="stylesheet" href="{% static 'css/loan.css' %}">
+    <style>
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'loan_dept' %}" class="back-button">
+        <span class="arrow"></span>
+        Back
+    </a>
+
+    <div class="container">
+        <h1>Loan Details</h1>
+
+        {% if loans %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Loan Type</th>
+                        <th>Government ID</th>
+                        <th>Home Coordinates</th>
+                        <th>Collateral Details</th>
+                        <th>Land Coordinates</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for loan in loans %}
+                        <tr>
+                            <td>{{ loan.full_name }}</td>
+                            <td>{{ loan.email }}</td>
+                            <td>{{ loan.phone }}</td>
+                            <td>{{ loan.address }}</td>
+                            <td>{{ loan.loan_type }}</td>
+                            <td>{{ loan.gov_id }}</td>
+                            <td>{{ loan.home_coords }}</td>
+                            <td>{{ loan.collateral_details }}</td>
+                            <td>{{ loan.land_coords }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No loan details available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
