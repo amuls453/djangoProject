@@ -1,93 +1,132 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Loan Registration Form</title>
-    <link rel="stylesheet" href="{% static 'css/loan.css' %}">
-    <link rel="stylesheet" href="{% static 'css/modal.css' %}"> <!-- Include new CSS file -->
+    <link rel="stylesheet" href="{% static 'css/loan.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}" />
+    <!-- Include new CSS file -->
     <script>
-        function showSuccessModal() {
-            document.getElementById('successModal').style.display = 'block';
-        }
+      function showSuccessModal() {
+          document.getElementById('successModal').style.display = 'block';
+      }
 
-        function closeModal() {
-            document.getElementById('successModal').style.display = 'none';
-        }
+      function closeModal() {
+          document.getElementById('successModal').style.display = 'none';
+      }
 
-        window.onload = function() {
-            {% if success %}
-            showSuccessModal();
-            {% endif %}
-        }
+      window.onload = function() {
+          {% if success %}
+          showSuccessModal();
+          {% endif %}
+      }
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <a href="{% url 'loan_dept' %}" class="back-button">
-        <span class="arrow"></span>
-        Back
+      <span class="arrow"></span>
+      Back
     </a>
 
     <div class="container">
-        <h1>Loan Registration Form</h1>
-        <form action="{% url 'submit_loan_registration' %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <fieldset>
-                <legend>Personal Details</legend>
-                <label for="fullName">Full Name:</label>
-                <input type="text" id="fullName" name="name" required>
+      <h1>Loan Registration Form</h1>
+      <form
+        action="{% url 'submit_loan_registration' %}"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <fieldset>
+          <legend>Personal Details</legend>
+          <label for="fullName">Full Name:</label>
+          <input type="text" id="fullName" name="name" required />
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
 
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required>
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" required />
 
-                <label for="address">Home Address:</label>
-                <input type="text" id="address" name="address" required>
-            </fieldset>
+          <label for="address">Home Address:</label>
+          <input type="text" id="address" name="address" required />
+        </fieldset>
 
-            <fieldset>
-                <legend>Loan Details</legend>
-                <label for="loanType">Loan Type:</label>
-                <select id="loanType" name="loan_type" required>
-                    <option value="personal">Personal</option>
-                    <option value="institutional">Institutional</option>
-                </select>
+        <fieldset>
+          <legend>Loan Details</legend>
+          <label for="loanType">Loan Type:</label>
+          <select id="loanType" name="loan_type" required>
+            <option value="Personal">Personal</option>
+            <option value="Institutional">Institutional</option>
+          </select>
 
-                <label for="govID">Government ID Details:</label>
-                <input type="text" id="govID" name="govt_id_number" required>
+          <label for="govID_type">Government ID Type</label>
+          <input type="text" id="govID_type" name="govt_id_type" required />
 
-                <label for="govIDUpload">Upload Government ID:</label>
-                <input type="file" id="govIDUpload" name="govt_id_upload" accept=".jpg,.jpeg,.png,.pdf" required>
-            </fieldset>
+          <label for="govID">Government ID Number</label>
+          <input type="text" id="govID" name="govt_id_number" required />
 
-            <fieldset>
-                <legend>Photo and Coordinates</legend>
-                <label for="photoCapture">Upload Photo:</label>
-                <input type="file" id="photoCapture" name="photo_capture" accept=".jpg,.jpeg,.png" required>
+          <label for="govIDUpload">Upload Government ID:</label>
+          <input
+            type="file"
+            id="govIDUpload"
+            name="govt_id_upload"
+            accept=".jpg,.jpeg,.png,.pdf"
+            required
+          />
+        </fieldset>
 
-                <label for="homeCoords">Home Coordinates:</label>
-                <input type="text" id="homeCoords" name="home_coordinates" placeholder="Latitude, Longitude" required>
+        <fieldset>
+          <legend>Photo and Coordinates</legend>
+          <label for="photoCapture">Upload Photo:</label>
+          <input
+            type="file"
+            id="photoCapture"
+            name="photo_capture"
+            accept=".jpg,.jpeg,.png"
+            required
+          />
 
-                <label for="collateralDetails">Collateral Details:</label>
-                <textarea id="collateralDetails" name="collateral_details" rows="4" required></textarea>
+          <label for="homeCoords">Home Coordinates:</label>
+          <input
+            type="text"
+            id="homeCoords"
+            name="home_coordinates"
+            placeholder="Latitude, Longitude"
+            required
+          />
 
-                <label for="landCoords">Land Coordinates:</label>
-                <input type="text" id="landCoords" name="collateral_coordinates" placeholder="Latitude, Longitude" required>
-            </fieldset>
+          <label for="collateralDetails">Collateral Details:</label>
+          <textarea
+            id="collateralDetails"
+            name="collateral_type"
+            rows="4"
+            required
+          ></textarea>
 
-            <button type="submit">Submit</button>
-        </form>
+          <label for="landCoords">Land Coordinates:</label>
+          <input
+            type="text"
+            id="landCoords"
+            name="collateral_coordinates"
+            placeholder="Latitude, Longitude"
+            required
+          />
+        </fieldset>
+
+        <button type="submit">Submit</button>
+      </form>
     </div>
 
     <!-- The Modal -->
     <div id="successModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="successMessage">Your loan registration has been successfully saved!</h2>
-        </div>
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="successMessage">
+          Your loan registration has been successfully saved!
+        </h2>
+      </div>
     </div>
-</body>
+  </body>
 </html>
